@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>survey page</title>
+    <style>
+        
+.formsu {
+    height: 28vh;
+}
+.startSurvey{
+    margin: 0vh 46%;
+    color: black;
+    background: aqua;
+    outline: none;
+    border: 1px solid burlywood;
+    border-radius: 10%;
+    height: 50px;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+p{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    font-size: 60px;
+}
+
+    </style>
+</head>
+<body>
+    <p>Start Survey</p>
+    <form method="get" class="formsu" action="/api/qution/getallqution">
+        <button class="startSurvey" type="submit">Contineues</button>
+    </form>
+
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- <script>
+    function startsuy(){
+        axios.get('/api/qution/getallqution').then((e) => {
+        console.log(e)
+        document.getElementById('survayForm').innerHTML = e.data.data.map((r) => {
+            return(
+                `<form>
+    <p>${r.titel}</p>
+    <input type="radio" id="html" name="answer" value=${r.answer}>
+    <label for="html">${r.answer}</label><br>
+    <input type="radio" id="css" name="fav_language" value="CSS">
+    <label for="css">CSS</label><br>
+    <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+    <label for="javascript">JavaScript</label>
+</form> `
+            )
+            
+        })
+    })
+    }
+    // axios.get('/api/qution/getallqution').then((e) => {
+    //     console.log(e)
+    //     e.data.data.map((r) => {
+    //         ``
+    //     })
+    // })
+</script> -->

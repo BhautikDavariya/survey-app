@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sing In</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="design/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="design/css/style.css">
+</head>
+<body>
+
+    <div class="main">
+
+        <!-- Sing in  Form -->
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="design/images/signin-image.jpg" alt="sing up image"></figure>
+                        <a href="/" class="signup-image-link">Create an account</a>
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Sign in</h2>
+                        <form method="POST" action="/api/user/login" class="register-form" id="login-form">
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="password" placeholder="Password"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="checkbox" id="checkbox" class="agree-term" />
+                                <label for="checkbox" class="label-agree-term"><span><span></span></span>Remember me</label>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            </div>
+                        </form>
+                        <div class="social-login">
+                            <span class="social-label">Or login with</span>
+                            <ul class="socials">
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="design/vendor/jquery/jquery.min.js"></script>
+    <script src="index.js"></script>
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+        jQuery.validator.addMethod("alphanumeric", function (value, element) {
+            return this.optional(element) || /(?!^\d+$)^.+$/i.test(value);
+        }, "Do Not Use Only Number in UserName");
+
+        jQuery.validator.addMethod("gmailvalidation", function (value, element) {
+            return this.optional(element) || /^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$/.test(value);
+        }, "Use Your valid Gmail address");
+
+        $.validator.setDefaults({
+            ignore: [] // DON'T IGNORE PLUGIN HIDDEN SELECTS, CHECKBOXES AND RADIOS!!!
+        });
+
+        $().ready(function () {
+            $("#login-form").validate({
+                errorPlacement: function ($error, $element) {
+                    $error.appendTo($element.closest("div"));
+                },
+                rules: {
+                    email: {
+                        required: true,
+                        email: true,
+                        gmailvalidation: true
+                    },
+                    password: {
+                        required: true,
+                    },
+                    checkbox: {
+                        required: true,
+                        minlength: 1
+                    }
+                },
+                messages: {
+                    email: {
+                        required: "please enter your email",
+                        email: "Only valid emails Are Allowed"
+                    },
+                    password: {
+                        required: "please enter your password",
+                    },
+                    checkbox: {
+                        required: 'please agree our terms and condition',
+                        minlength: 'please agree our terms and condition'
+                    }
+                }
+            })
+        });
+    </script>
+    </body>
+</html>
